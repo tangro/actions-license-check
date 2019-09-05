@@ -3,9 +3,9 @@ description: 'Action to check the repo for (production) dependencies that have a
 author: 'tangro'
 inputs:
   allowed-licenses:
-    description: 'The list of allowed licenses'
+    description: 'The list of allowed licenses. Use semicolons to separate.'
     required: false
-    default: ['MIT']
+    default: 'MIT; Apache-2.0; ISC'
 runs:
   using: 'node12'
   main: 'dist/index.js'

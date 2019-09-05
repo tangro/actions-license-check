@@ -1,5 +1,6 @@
 import * as core from '@actions/core';
 import { GitHubContext } from '@tangro/tangro-github-toolkit';
+import { runLicenseCheck } from './runLicenseCheck';
 
 async function run() {
   try {
@@ -23,7 +24,8 @@ async function run() {
 
     const [owner, repo] = context.repository.split('/');
 
-    console.log(core.getInput('allowed-licenses'));
+    const allowedLicenses = core.getInput('allowed-licenses');
+    await runLicenseCheck(allowedLicenses);
 
     core.debug('debug message');
   } catch (error) {
