@@ -20,12 +20,10 @@
   "dependencies": {
     "@actions/core": "^1.0.0",
     "@actions/exec": "^1.0.0",
-    "@tangro/tangro-github-toolkit": "0.4.0",
-    "license-checker": "^25.0.1"
+    "@tangro/tangro-github-toolkit": "0.4.0"
   },
   "devDependencies": {
     "@types/jest": "^24.0.13",
-    "@types/license-checker": "^25.0.0",
     "@types/node": "^12.0.4",
     "@zeit/ncc": "^0.20.4",
     "jest": "^24.8.0",

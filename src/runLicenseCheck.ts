@@ -1,21 +1,37 @@
-import checker from 'license-checker';
+import { exec } from '@actions/exec';
+import { ExecOptions } from '@actions/exec/lib/interfaces';
 
 export async function runLicenseCheck(allowedLicenses: string) {
-  return new Promise((resolve, reject) => {
-    checker.init(
-      {
-        start: process.env.RUNNER_WORKSPACE as string,
-        onlyAllow: allowedLicenses
+  let stdout = '';
+  let stderr = '';
+
+  const options: ExecOptions = {
+    ignoreReturnCode: true,
+    listeners: {
+      stdout: data => {
+        stdout += data.toString();
       },
-      (error: Error, packages: checker.ModuleInfos) => {
-        if (error) {
-          console.log(error);
-          reject(error);
-        } else {
-          console.log(packages);
-          resolve();
-        }
+      stderr: data => {
+        stderr += data.toString();
       }
-    );
-  });
+    }
+  };
+
+  await exec(
+    'npx',
+    [
+      '-q',
+      'license-checker',
+      '--production',
+      '--json',
+      `--onlyAllow=${allowedLicenses}`
+    ],
+    options
+  );
+
+  if (stderr.length > 0) {
+    throw new Error(stderr);
+  } else {
+    return stdout;
+  }
 }
