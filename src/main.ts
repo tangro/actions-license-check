@@ -23,6 +23,8 @@ async function run() {
 
     const [owner, repo] = context.repository.split('/');
 
+    console.log(core.getInput('allowed-licenses'));
+
     core.debug('debug message');
   } catch (error) {
     core.setFailed(error.message);

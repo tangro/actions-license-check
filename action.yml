@@ -1,10 +1,11 @@
-name: 'Tangro Actions template'
-description: 'Add a description'
+name: 'actions-license-check'
+description: 'Action to check the repo for (production) dependencies that have an unallowed license'
 author: 'tangro'
 inputs:
-  example-input:
-    description: 'Add more inputs here'
-    required: true
+  allowed-licenses:
+    description: 'The list of allowed licenses'
+    required: false
+    default: ['MIT']
 runs:
   using: 'node12'
   main: 'dist/index.js'
