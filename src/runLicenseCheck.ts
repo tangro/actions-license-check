@@ -1,7 +1,17 @@
 import { exec } from '@actions/exec';
 import { ExecOptions } from '@actions/exec/lib/interfaces';
+import { GitHubContext } from '@tangro/tangro-github-toolkit';
+import path from 'path';
 
-export async function runLicenseCheck(allowedLicenses: string) {
+export async function runLicenseCheck({
+  context,
+  allowedLicenses
+}: {
+  context: GitHubContext;
+  allowedLicenses: string;
+}) {
+  const [owner, repo] = context.repository.split('/');
+
   let stdout = '';
   let stderr = '';
 
@@ -20,7 +30,7 @@ export async function runLicenseCheck(allowedLicenses: string) {
   await exec(
     'npx',
     [
-      `-start=${process.env.RUNNER_WORKSPACE}`,
+      `-start=${path.join(process.env.RUNNER_WORKSPACE, repo)}`,
       '-q',
       'license-checker',
       '--production',

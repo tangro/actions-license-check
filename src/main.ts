@@ -54,11 +54,13 @@ async function run() {
   try {
     const [owner, repo] = context.repository.split('/');
 
-    console.log(fs.readdirSync(process.env.RUNNER_WORKSPACE as string));
+    console.log(
+      fs.readdirSync(path.join(process.env.RUNNER_WORKSPACE as string, repo))
+    );
 
     wrapWithSetStatus(context, 'license-check', async () => {
       const allowedLicenses = core.getInput('allowed-licenses');
-      const output = await runLicenseCheck(allowedLicenses);
+      const output = await runLicenseCheck({ context, allowedLicenses });
       fs.mkdirSync('license-check');
       fs.writeFileSync(
         path.join('license-check', 'index.html'),
