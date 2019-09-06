@@ -17,6 +17,7 @@ export async function runLicenseCheck({
 
   const options: ExecOptions = {
     ignoreReturnCode: true,
+    cwd: path.join(process.env.RUNNER_WORKSPACE as string, repo),
     listeners: {
       stdout: data => {
         stdout += data.toString();
@@ -27,14 +28,11 @@ export async function runLicenseCheck({
     }
   };
 
-  await exec('pwd', [], options);
-
   await exec(
     'npx',
     [
       '-q',
       'license-checker',
-      `--start=${path.join(process.env.RUNNER_WORKSPACE as string, repo)}`,
       '--production',
       '--json',
       `--onlyAllow=${allowedLicenses}`
