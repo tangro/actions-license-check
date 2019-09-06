@@ -32,11 +32,7 @@ export async function runLicenseCheck({
     [
       '-q',
       'license-checker',
-      `--start=${path.join(
-        process.env.RUNNER_WORKSPACE as string,
-        repo,
-        'package.json'
-      )}`,
+      `--start=${path.join(process.env.RUNNER_WORKSPACE as string, repo)}`,
       '--production',
       '--json',
       `--onlyAllow=${allowedLicenses}`
