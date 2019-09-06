@@ -73,8 +73,8 @@ async function run() {
       fs.readdirSync(path.join(__dirname, '..', '..', '..', '..', '..'))
     );
     console.log(
-      '__dirname/../../../../tangro',
-      fs.readdirSync(path.join(__dirname, '..', '..', '..', '..', 'tangro'))
+      '__dirname/../../../../../repo',
+      fs.readdirSync(path.join(__dirname, '..', '..', '..', '..', '..', repo))
     );
     console.log(
       'RUNNER_WORKSPACE',
