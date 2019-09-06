@@ -54,6 +54,9 @@ async function run() {
   try {
     const [owner, repo] = context.repository.split('/');
 
+    console.log(fs.readdirSync(path.join(__dirname)));
+    console.log(fs.readdirSync(path.join(__dirname, repo)));
+
     wrapWithSetStatus(context, 'license-check', async () => {
       const allowedLicenses = core.getInput('allowed-licenses');
       const output = await runLicenseCheck(allowedLicenses);
