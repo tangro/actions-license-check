@@ -27,6 +27,8 @@ export async function runLicenseCheck({
     }
   };
 
+  await exec('pwd', [], options);
+
   await exec(
     'npx',
     [

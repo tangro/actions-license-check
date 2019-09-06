@@ -69,16 +69,20 @@ async function run() {
       fs.readdirSync(path.join(__dirname, '..', '..', '..', '..'))
     );
     console.log(
-      fs.readdirSync(
-        'RUNNER_WORKSPACE',
-        path.join(process.env.RUNNER_WORKSPACE as string)
-      )
+      '__dirname/../../../../..',
+      fs.readdirSync(path.join(__dirname, '..', '..', '..', '..', '..'))
     );
     console.log(
-      fs.readdirSync(
-        'RUNNER_WORKSPACE/repo',
-        path.join(process.env.RUNNER_WORKSPACE as string, repo)
-      )
+      '__dirname/../../../../tangro',
+      fs.readdirSync(path.join(__dirname, '..', '..', '..', '..', 'tangro'))
+    );
+    console.log(
+      'RUNNER_WORKSPACE',
+      fs.readdirSync(path.join(process.env.RUNNER_WORKSPACE as string))
+    );
+    console.log(
+      'RUNNER_WORKSPACE/repo',
+      fs.readdirSync(path.join(process.env.RUNNER_WORKSPACE as string, repo))
     );
 
     wrapWithSetStatus(context, 'license-check', async () => {
