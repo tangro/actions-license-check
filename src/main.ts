@@ -75,6 +75,7 @@ async function run() {
       path.join('license-check', 'index.html'),
       `<html><body><pre><code>${error.message}</code></pre></body></html>`
     );
+    console.log('output written to license-check');
 
     setStatus({
       context,
