@@ -54,7 +54,7 @@ async function run() {
   try {
     const [owner, repo] = context.repository.split('/');
 
-    console.log(fs.readdirSync(path.join(__dirname)));
+    console.log(fs.readdirSync(process.env.RUNNER_WORKSPACE as string));
     console.log(fs.readdirSync(path.join(__dirname, repo)));
 
     wrapWithSetStatus(context, 'license-check', async () => {

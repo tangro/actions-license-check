@@ -20,6 +20,7 @@ export async function runLicenseCheck(allowedLicenses: string) {
   await exec(
     'npx',
     [
+      `-start=${process.env.RUNNER_WORKSPACE}`,
       '-q',
       'license-checker',
       '--production',
