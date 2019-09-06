@@ -54,6 +54,12 @@ async function run() {
   try {
     const [owner, repo] = context.repository.split('/');
 
+    console.log(fs.readdirSync(path.join(__dirname)));
+    console.log(fs.readdirSync(path.join(__dirname, '..')));
+    console.log(fs.readdirSync(path.join(__dirname, '..', '..')));
+    console.log(
+      fs.readdirSync(path.join(process.env.RUNNER_WORKSPACE as string))
+    );
     console.log(
       fs.readdirSync(path.join(process.env.RUNNER_WORKSPACE as string, repo))
     );
