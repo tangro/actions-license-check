@@ -52,39 +52,6 @@ async function run() {
   const context = JSON.parse(process.env.GITHUB_CONTEXT || '') as GitHubContext;
 
   try {
-    const [owner, repo] = context.repository.split('/');
-
-    console.log('__dirname', fs.readdirSync(path.join(__dirname)));
-    console.log('__dirname/..', fs.readdirSync(path.join(__dirname, '..')));
-    console.log(
-      '__dirname/../..',
-      fs.readdirSync(path.join(__dirname, '..', '..'))
-    );
-    console.log(
-      '__dirname/../../..',
-      fs.readdirSync(path.join(__dirname, '..', '..', '..'))
-    );
-    console.log(
-      '__dirname/../../../..',
-      fs.readdirSync(path.join(__dirname, '..', '..', '..', '..'))
-    );
-    console.log(
-      '__dirname/../../../../..',
-      fs.readdirSync(path.join(__dirname, '..', '..', '..', '..', '..'))
-    );
-    console.log(
-      '__dirname/../../../../../repo',
-      fs.readdirSync(path.join(__dirname, '..', '..', '..', '..', '..', repo))
-    );
-    console.log(
-      'RUNNER_WORKSPACE',
-      fs.readdirSync(path.join(process.env.RUNNER_WORKSPACE as string))
-    );
-    console.log(
-      'RUNNER_WORKSPACE/repo',
-      fs.readdirSync(path.join(process.env.RUNNER_WORKSPACE as string, repo))
-    );
-
     wrapWithSetStatus(context, 'license-check', async () => {
       const allowedLicenses = core.getInput('allowed-licenses');
       const output = await runLicenseCheck({ context, allowedLicenses });

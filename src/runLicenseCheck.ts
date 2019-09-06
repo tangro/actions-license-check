@@ -28,7 +28,17 @@ export async function runLicenseCheck({
     }
   };
 
-  await exec('npx', ['-q', 'license-checker'], options);
+  await exec(
+    'npx',
+    [
+      '-q',
+      'license-checker',
+      '--production',
+      '--json',
+      `--onlyAllow=${allowedLicenses}`
+    ],
+    options
+  );
 
   if (stderr.length > 0) {
     throw new Error(stderr);
