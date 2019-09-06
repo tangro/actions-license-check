@@ -30,7 +30,11 @@ export async function runLicenseCheck({
   await exec(
     'npx',
     [
-      `-start=${path.join(process.env.RUNNER_WORKSPACE as string, repo)}`,
+      `--start=${path.join(
+        process.env.RUNNER_WORKSPACE as string,
+        repo,
+        'package.json'
+      )}`,
       '-q',
       'license-checker',
       '--production',
