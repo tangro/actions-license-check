@@ -5,7 +5,7 @@ inputs:
   allowed-licenses:
     description: 'The list of allowed licenses. Use semicolons to separate licenses.'
     required: false
-    default: 'MIT; Apache-2.0; ISC; Custom: https://www.telerik.com/kendo-angular-ui/'
+    default: 'MIT; Apache-2.0; ISC; Custom: https://www.telerik.com/kendo-angular-ui/; BSD'
 runs:
   using: 'node12'
   main: 'dist/index.js'

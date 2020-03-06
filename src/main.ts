@@ -1,41 +1,12 @@
 import * as core from '@actions/core';
 import * as fs from 'fs';
 import path from 'path';
-import { GitHubContext, setStatus } from '@tangro/tangro-github-toolkit';
+import {
+  GitHubContext,
+  setStatus,
+  wrapWithSetStatus
+} from '@tangro/tangro-github-toolkit';
 import { runLicenseCheck } from './runLicenseCheck';
-import { Result } from './Result';
-
-async function wrapWithSetStatus<T>(
-  context: GitHubContext,
-  step: string,
-  code: () => Promise<Result<T>>
-) {
-  setStatus({
-    context,
-    step,
-    description: `Running ${step}`,
-    state: 'pending'
-  });
-
-  try {
-    const result = await code();
-    setStatus({
-      context,
-      step,
-      description: result.shortText,
-      state: result.isOkay ? 'success' : 'failure'
-    });
-    return result;
-  } catch (error) {
-    setStatus({
-      context,
-      step,
-      description: `Failed: ${step}`,
-      state: 'failure'
-    });
-    core.setFailed(`CI failed at step: ${step}`);
-  }
-}
 
 async function run() {
   if (!process.env.GITHUB_CONTEXT || process.env.GITHUB_CONTEXT.length === 0) {
@@ -49,10 +20,12 @@ async function run() {
     );
   }
 
-  const context = JSON.parse(process.env.GITHUB_CONTEXT || '') as GitHubContext;
+  const context = JSON.parse(
+    process.env.GITHUB_CONTEXT || ''
+  ) as GitHubContext<{}>;
 
   try {
-    wrapWithSetStatus(context, 'license-check', async () => {
+    await wrapWithSetStatus(context, 'license-check', async () => {
       const allowedLicenses = core.getInput('allowed-licenses');
       const output = await runLicenseCheck({ context, allowedLicenses });
       fs.mkdirSync('license-check');
@@ -75,9 +48,9 @@ async function run() {
       path.join('license-check', 'index.html'),
       `<html><body><pre><code>${error.message}</code></pre></body></html>`
     );
-    console.log('output written to license-check');
+    core.info('output written to license-check');
 
-    setStatus({
+    await setStatus({
       context,
       description: error.message,
       state: 'failure',

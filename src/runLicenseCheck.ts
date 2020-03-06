@@ -7,7 +7,7 @@ export async function runLicenseCheck({
   context,
   allowedLicenses
 }: {
-  context: GitHubContext;
+  context: GitHubContext<{}>;
   allowedLicenses: string;
 }) {
   const [owner, repo] = context.repository.split('/');
