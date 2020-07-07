@@ -33,7 +33,7 @@ license-check:
     - name: Run npm install
       run: npm install
     - name: Check licenses
-      uses: tangro/actions-license-check@0.0.1
+      uses: tangro/actions-license-check@1.0.1
       with:
         allowed-licenses: 'MIT; ISC; Apache-2.0; Custom: https://www.telerik.com/kendo-angular-ui/; Custom: https://www.telerik.com/kendo-react-ui/; BSD'
       env:
