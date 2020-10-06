@@ -2,3 +2,4 @@ node_modules/
 __tests__/runner/*
 .env
 .vscode
+.DS_Store
