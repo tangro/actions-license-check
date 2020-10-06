@@ -92,7 +92,7 @@ license-check:
         zip --quiet --recurse-paths ../license-check.zip *
     - name: Deploy license check result
       if: always()
-      uses: <%= tangro['actions-deploy] %>
+      uses: <%= tangro['actions-deploy'] %>
       with:
         context: auto
         zip-file: license-check.zip
