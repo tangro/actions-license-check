@@ -1,6 +1,6 @@
 {
   "name": "actions-license-check",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "private": true,
   "description": "Action to check the repo for (production) dependencies that have an unallowed license",
   "main": "lib/main.js",
@@ -18,13 +18,13 @@
   "author": "ankri",
   "license": "MIT",
   "dependencies": {
-    "@actions/core": "1.2.4",
+    "@actions/core": "1.2.6",
     "@actions/exec": "1.0.4",
-    "@tangro/tangro-github-toolkit": "1.0.2"
+    "@tangro/tangro-github-toolkit": "1.0.3"
   },
   "devDependencies": {
-    "@types/node": "14.0.18",
+    "@types/node": "14.11.5",
     "@zeit/ncc": "0.22.3",
-    "typescript": "3.9.6"
+    "typescript": "4.0.3"
   }
 }
