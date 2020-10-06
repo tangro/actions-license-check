@@ -1,5 +1,5 @@
 name: 'actions-license-check'
-description: 'Action to check the repo for (production) dependencies that have an unallowed license'
+description: 'Action to check the repo for (production) dependencies that have an disallowed license'
 author: 'tangro'
 inputs:
   allowed-licenses:
