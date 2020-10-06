@@ -1,6 +1,6 @@
 {
   "name": "@tangro/actions-license-check",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "private": true,
   "description": "Action to check the repo for (production) dependencies that have an disallowed license",
   "main": "lib/main.js",
