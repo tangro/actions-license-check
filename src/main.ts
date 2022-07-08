@@ -41,7 +41,7 @@ async function run() {
         text: output
       };
     });
-  } catch (error) {
+  } catch (error: any) {
     core.setFailed(error.message);
     fs.mkdirSync('license-check');
     fs.writeFileSync(
