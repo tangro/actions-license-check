@@ -32,6 +32,7 @@ export async function runLicenseCheck({
     'npx',
     [
       '-q',
+      '--yes',
       'license-checker',
       '--production',
       '--json',
