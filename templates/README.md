@@ -46,7 +46,7 @@ license-check:
 Steps this example job will perform:
 
 1. Check out the latest code
-2. Use node v12
+2. Use node v16
 3. Run `npm install` - Sadly we need to install the dependencies to check the licenses
 4. (this action) Run the license check
 
