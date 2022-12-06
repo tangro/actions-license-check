@@ -14,7 +14,7 @@ By default these licenses are allowed:
 
 # Version
 
-You can use a specific `version` of this action. The latest published version is `v1.0.10`. You can also use `latest` to always get the latest version.
+You can use a specific `version` of this action. The latest published version is `v1.0.11`. You can also use `latest` to always get the latest version.
 
 # Example job
 
@@ -33,7 +33,7 @@ license-check:
     - name: Run npm install
       run: npm install
     - name: Check licenses
-      uses: tangro/actions-license-check@v1.0.10
+      uses: tangro/actions-license-check@v1.0.11
       with:
         allowed-licenses: 'MIT; ISC; Apache-2.0; Custom: https://www.telerik.com/kendo-angular-ui/; Custom: https://www.telerik.com/kendo-react-ui/; BSD'
       env:
@@ -79,7 +79,7 @@ license-check:
     - name: Run npm install
       run: npm install
     - name: Check licenses
-      uses: tangro/actions-license-check@v1.0.10
+      uses: tangro/actions-license-check@v1.0.11
       with:
         allowed-licenses: 'MIT; ISC; Apache-2.0; Custom: https://www.telerik.com/kendo-angular-ui/; Custom: https://www.telerik.com/kendo-react-ui/; BSD'
       env:
@@ -92,7 +92,7 @@ license-check:
         zip --quiet --recurse-paths ../license-check.zip *
     - name: Deploy license check result
       if: always()
-      uses: tangro/actions-deploy@v1.2.12
+      uses: tangro/actions-deploy@v1.2.13
       with:
         context: auto
         zip-file: license-check.zip
