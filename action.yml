@@ -7,5 +7,5 @@ inputs:
     required: false
     default: 'MIT; Apache-2.0; ISC; Custom: https://www.telerik.com/kendo-angular-ui/; BSD'
 runs:
-  using: 'node12'
+  using: 'node16'
   main: 'dist/index.js'
