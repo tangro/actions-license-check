@@ -14,7 +14,7 @@ By default these licenses are allowed:
 
 # Version
 
-You can use a specific `version` of this action. The latest published version is `v1.0.15`. You can also use `latest` to always get the latest version.
+You can use a specific `version` of this action. The latest published version is `v1.0.16`. You can also use `latest` to always get the latest version.
 
 # Example job
 
@@ -23,7 +23,7 @@ license-check:
   runs-on: ubuntu-latest
   steps:
     - name: Checkout latest code
-      uses: actions/checkout@v6-beta
+      uses: actions/checkout@v6
     - name: Use Node.js 16.x
       uses: actions/setup-node@v6.0.0
       with:
@@ -33,7 +33,7 @@ license-check:
     - name: Run npm install
       run: npm install
     - name: Check licenses
-      uses: tangro/actions-license-check@v1.0.15
+      uses: tangro/actions-license-check@v1.0.16
       with:
         allowed-licenses: 'MIT; ISC; Apache-2.0; Custom: https://www.telerik.com/kendo-angular-ui/; Custom: https://www.telerik.com/kendo-react-ui/; BSD'
       env:
@@ -69,7 +69,7 @@ license-check:
   runs-on: ubuntu-latest
   steps:
     - name: Checkout latest code
-      uses: actions/checkout@v6-beta
+      uses: actions/checkout@v6
     - name: Use Node.js 16.x
       uses: actions/setup-node@v6.0.0
       with:
@@ -79,7 +79,7 @@ license-check:
     - name: Run npm install
       run: npm install
     - name: Check licenses
-      uses: tangro/actions-license-check@v1.0.15
+      uses: tangro/actions-license-check@v1.0.16
       with:
         allowed-licenses: 'MIT; ISC; Apache-2.0; Custom: https://www.telerik.com/kendo-angular-ui/; Custom: https://www.telerik.com/kendo-react-ui/; BSD'
       env:
